@@ -1,8 +1,6 @@
 <template>
-  <div class="about">
-    <side-comp></side-comp>
-    <banner-comp></banner-comp>
-    <section class="about__container">
+  <div class="notfound">
+    <section class="notfound__container">
     
     </section>
     <footer-comp></footer-comp>
@@ -10,20 +8,18 @@
 </template>
 
 <script setup>
-import SideComp from '@/components/layout/SideComp'
-import BannerComp from '@/components/layout/BannerComp'
 import FooterComp from '@/components/layout/FooterComp'
 
 </script> 
 
 <style lang="scss" scoped>
-.about {
+.notfound {
  background-color: var(--background-color-primary);
  color: var(--text-primary-color);
  min-height: 100vh;
  width: 100%;
 }
-.about__container {
+.notfound__container {
   display: flex;
   flex-direction: column;
   align-items: center;

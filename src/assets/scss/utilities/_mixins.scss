@@ -1,0 +1,105 @@
+@mixin for-size($size) {
+  @if $size == phone-only {
+    @media (max-width: 599px) { @content; }
+  } @else if $size == tablet-portrait-up {
+    @media (min-width: 600px) { @content; }
+  } @else if $size == tablet-landscape-up {
+    @media (min-width: 900px) { @content; }
+  } @else if $size == desktop-up {
+    @media (min-width: 1200px) { @content; }
+  } @else if $size == big-desktop-up {
+    @media (min-width: 1800px) { @content; }
+  }
+}
+
+/// Shorthand mixin for offset positioning
+/// @param {String} $position - Either `relative`, `absolute` or `fixed`
+/// @param {Length} $top [null] - Top offset
+/// @param {Length} $right [null] - Right offset
+/// @param {Length} $bottom [null] - Bottom offset
+/// @param {Length} $left [null] - Left offset
+@mixin position($position, $top: null, $right: null, $bottom: null, $left: null) {
+  position: $position;
+  top: $top;
+  right: $right;
+  bottom: $bottom;
+  left: $left;
+}
+
+/// Shorthand mixin for absolute positioning
+/// Serves as an alias for `position(absolute, ...)`
+/// @param {Arglist} $args - Offsets
+/// @require {mixin} position
+@mixin absolute($args...) {
+  @include position(absolute, $args...);
+}
+
+/// Shorthand mixin for relative positioning
+/// Serves as an alias for `position(relative, ...)`
+/// @param {Arglist} $args - Offsets
+/// @require {mixin} position
+@mixin relative($args...) {
+  @include position(relative, $args...);
+}
+
+/// Shorthand mixin for fixed positioning
+/// Serves as an alias for `position(fixed, ...)`
+/// @param {Arglist} $args - Offsets
+/// @require {mixin} position
+@mixin fixed($args...) {
+  @include position(fixed, $args...);
+}
+
+// Example usage:
+// .foo {
+//   @include absolute($top: 1em, $left: 50%);
+// }
+
+/// A mixin to rule complex flexbox layouts
+/// @param {String} $direction - Either `row` or `column`
+/// @param {String} $justify - Either `start`, `end`, `center`, `space-around`, `space-between` or `space-evenly`
+/// @param {String} $align - Either `start`, `end`, `center`, `stretch` or `baseline`
+/// @param {String} $align-content - Either `start`, `end`, `center`, `space-around`, `space-between` or `space-evenly`
+/// @param {String} $align-items - Either `start`, `end`, `center`, `stretch` or `baseline`
+/// @param {String} $wrap - Either `nowrap`, `wrap` or `wrap-reverse`
+@mixin flexbox(
+  $display: flex,
+  $direction: row,
+  $placeContent: null,
+  $placeItems: null,
+  $wrap: nowrap,
+  $shrink: 0,
+  $grow: 0,
+  $alignContent: null,
+  $justifyContent: null,
+  $alignItems: null,
+  $justifyItems: null) {
+
+  display: $display;
+  flex-direction: $direction;
+
+  @if $placeContent == null {
+    @if $alignContent   { align-content: $alignContent; }
+    @if $justifyContent { justify-content: $justifyContent; }
+  } @else {
+    place-content: $placeContent;
+  }
+
+  @if $placeItems == null {
+    @if $alignItems   { align-items: $alignItems; }
+    @if $justifyItems { justify-items: $justifyItems; }
+  } @else {
+    place-items: $placeItems;
+  }
+
+  flex-wrap: $wrap;
+  flex-shrink: $shrink;
+  flex-grow: $grow;
+}
+
+// Example usage:
+// .box {
+//   @include flexbox($placeContent: flex-start, $placeItems: center, $direction: column,  $wrap: wrap, $grow: 1, $shrink: 1);
+//   //$placeContent: flex-start, $placeItems: center, $direction: column, $wrap: wrap, $grow: 1, $shrink: 1
+//   //You don't have to use all the parameters of the mixins, you can use the ones you want.
+// }

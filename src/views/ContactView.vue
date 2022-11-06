@@ -1,8 +1,8 @@
 <template>
-  <div class="about">
+  <div class="contact">
     <side-comp></side-comp>
     <banner-comp></banner-comp>
-    <section class="about__container">
+    <section class="contact__container">
     
     </section>
     <footer-comp></footer-comp>
@@ -17,13 +17,13 @@ import FooterComp from '@/components/layout/FooterComp'
 </script> 
 
 <style lang="scss" scoped>
-.about {
+.contact {
  background-color: var(--background-color-primary);
  color: var(--text-primary-color);
  min-height: 100vh;
  width: 100%;
 }
-.about__container {
+.contact__container {
   display: flex;
   flex-direction: column;
   align-items: center;

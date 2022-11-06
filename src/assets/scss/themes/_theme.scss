@@ -1,0 +1,13 @@
+/* Define styles for the default root window element */
+:root {
+    --background-color-primary: #FFFFFF;
+    --background-color-secondary: #FBFBFB;
+    --text-primary-color: #1A1A1A;
+}
+
+/* Define styles for the root window with dark - mode preference */
+:root.dark-theme {
+    --background-color-primary: #1A1A1A;
+    --background-color-secondary: #000000;
+    --text-primary-color: #FBFBFB;
+}
