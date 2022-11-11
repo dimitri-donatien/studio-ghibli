@@ -1,14 +1,14 @@
 <template>
-  <div class="about">
+   <div class="catalog">
     <side-comp></side-comp>
-    <main class="about__container">
+    <main class="catalog__container">
       <banner-comp></banner-comp>
-      <section class="about__content">
+      <section class="catalog__content">
       
       </section>
       <footer-comp></footer-comp>
     </main>
- </div>
+  </div>
 </template>
 
 <script setup>
@@ -19,7 +19,7 @@ import FooterComp from '@/components/layout/FooterComp'
 </script> 
 
 <style lang="scss" scoped>
-.about {
+.catalog {
   display: flex;
   background-color: var(--background-color-primary);
   color: var(--text-primary-color);
@@ -27,7 +27,7 @@ import FooterComp from '@/components/layout/FooterComp'
   width: 100%;
   overflow: hidden;
 }
-.about__container {
+.catalog__container {
   display: flex;
   flex-direction: column;
   width: 100%;

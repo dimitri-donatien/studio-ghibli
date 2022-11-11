@@ -1,11 +1,13 @@
 <template>
   <div class="contact">
     <side-comp></side-comp>
-    <banner-comp></banner-comp>
-    <section class="contact__container">
-    
-    </section>
-    <footer-comp></footer-comp>
+    <main class="contact__container">
+      <banner-comp></banner-comp>
+      <section class="contact__content">
+      
+      </section>
+      <footer-comp></footer-comp>
+    </main>
  </div>
 </template>
 
@@ -18,17 +20,18 @@ import FooterComp from '@/components/layout/FooterComp'
 
 <style lang="scss" scoped>
 .contact {
- background-color: var(--background-color-primary);
- color: var(--text-primary-color);
- min-height: 100vh;
- width: 100%;
+  display: flex;
+  background-color: var(--background-color-primary);
+  color: var(--text-primary-color);
+  max-height: 100vh;
+  width: 100%;
+  overflow: hidden;
 }
 .contact__container {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  width: 100%;
   padding: 1.5rem;
-  overflow: hidden;
+  overflow-y: auto;
 }
 </style>

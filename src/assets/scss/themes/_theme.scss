@@ -8,6 +8,20 @@
 /* Define styles for the root window with dark - mode preference */
 :root.dark-theme {
     --background-color-primary: #1A1A1A;
-    --background-color-secondary: #000000;
+    --background-color-secondary: #111111;
     --text-primary-color: #FBFBFB;
+}
+
+/* Works on Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+    width: .5rem;
+}
+
+*::-webkit-scrollbar-track {
+    background: $brown;
+}
+
+*::-webkit-scrollbar-thumb {
+    background-color: $blue;
+    border: none;
 }

@@ -1,11 +1,13 @@
 <template>
    <div class="home">
     <side-comp></side-comp>
-    <banner-comp></banner-comp>
-    <section class="home__container">
-      
-    </section>
-    <footer-comp></footer-comp>
+    <main class="home__container">
+      <banner-comp></banner-comp>
+      <section class="home__content">
+        
+      </section>
+      <footer-comp></footer-comp>
+    </main>
   </div>
 </template>
 
@@ -18,17 +20,19 @@ import FooterComp from '@/components/layout/FooterComp'
 
 <style lang="scss" scoped>
 .home {
-  background-color: var(--background-color-primary);
+  display: flex;
+  background-color: var(--background-color-secondary);
   color: var(--text-primary-color);
-  min-height: 100vh;
   width: 100%;
+  height: 100vh;
+  max-height: 100vh;
+  overflow: hidden;
 }
 .home__container {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  width: 100%;
   padding: 1.5rem;
-  overflow: hidden;
+  overflow-y: auto;
 }
 </style>

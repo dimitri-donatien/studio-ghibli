@@ -3,7 +3,6 @@
     <div v-if="userTheme === 'dark-theme'" @click="toggleTheme" class="sun-dark">
       <img :src="require('@/assets/svg/sun-dark.svg')" alt="">
     </div>
-
     <div v-else @click="toggleTheme" class="sun-light">
       <img :src="require('@/assets/svg/sun-light.svg')" alt="">
     </div>
@@ -11,21 +10,23 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from "vue";
+import { ref, onMounted, defineEmits } from "vue";
+
+const emit = defineEmits(["onToggleTheme"]); 
 
 const userTheme = ref("light-theme");
 
 onMounted(() => {
   const initUserTheme = getTheme() || getMediaPreference();
-  setTheme(initUserTheme);
+  return setTheme(initUserTheme);
 });
 
 function toggleTheme() {
   const activeTheme = localStorage.getItem("user-theme");
   if (activeTheme === "light-theme") {
-    setTheme("dark-theme");
+    return setTheme("dark-theme");
   } else {
-    setTheme("light-theme");
+    return setTheme("light-theme");
   }
 }
 
@@ -37,6 +38,7 @@ function setTheme(theme) {
   localStorage.setItem("user-theme", theme);
   userTheme.value = theme;
   document.documentElement.className = theme;
+  emit("onToggleTheme", theme);
 }
 
 function getMediaPreference() {
@@ -51,14 +53,19 @@ function getMediaPreference() {
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
   .sun-light, .sun-dark {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 24px;
-    height: 24px;
-    margin: 0 .5rem;
+    width: 100%;
+    height: auto;
+    padding: 1rem;
+
+    & img {
+      width: 24px;
+      height: 24px;
+    }
   }
   .sun-light {
     color: var(--text-primary-color);
