@@ -7,3 +7,26 @@
 @import 'base/reset';
 
 @import 'themes/theme';
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: 'Nunito', sans-serif;
+    color: var(--text-primary-color);
+    margin: .5rem 0;
+}
+
+a, 
+span {
+    font-family: 'Nunito', sans-serif;
+    color: var(--text-primary-color);
+}
+
+p, small, em, b, strong, i, label, input, textarea, select, button {
+    font-family: 'Roboto', sans-serif;
+    color: var(--text-primary-color);
+    line-height: 1.5rem;
+}
