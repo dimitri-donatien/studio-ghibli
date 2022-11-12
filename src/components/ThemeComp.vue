@@ -1,10 +1,14 @@
 <template>
   <div>
-    <div v-if="userTheme === 'dark-theme'" @click="toggleTheme" class="sun-dark">
-      <img :src="require('@/assets/svg/sun-dark.svg')" alt="">
+    <div
+      v-if="userTheme === 'dark-theme'"
+      @click="toggleTheme"
+      class="sun-dark"
+    >
+      <img :src="require('@/assets/svg/sun-dark.svg')" alt="" />
     </div>
     <div v-else @click="toggleTheme" class="sun-light">
-      <img :src="require('@/assets/svg/sun-light.svg')" alt="">
+      <img :src="require('@/assets/svg/sun-light.svg')" alt="" />
     </div>
   </div>
 </template>
@@ -12,7 +16,7 @@
 <script setup>
 import { ref, onMounted, defineEmits } from "vue";
 
-const emit = defineEmits(["onToggleTheme"]); 
+const emit = defineEmits(["onToggleTheme"]);
 
 const userTheme = ref("light-theme");
 
@@ -54,23 +58,25 @@ function getMediaPreference() {
 </script>
 
 <style lang="scss" scoped>
-  .sun-light, .sun-dark {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: auto;
-    padding: 1rem;
+.sun-light,
+.sun-dark {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: auto;
+  padding: 1rem;
 
-    & img {
-      width: 24px;
-      height: 24px;
-    }
+  & img {
+    cursor: pointer;
+    width: 24px;
+    height: 24px;
   }
-  .sun-light {
-    color: var(--text-primary-color);
-  }
-  .sun-dark {
-    color: var(--text-primary-color);
-  }
+}
+.sun-light {
+  color: var(--text-primary-color);
+}
+.sun-dark {
+  color: var(--text-primary-color);
+}
 </style>

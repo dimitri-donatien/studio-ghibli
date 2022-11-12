@@ -1,37 +1,34 @@
 <template>
-   <div class="catalog">
+  <div class="catalog">
     <side-comp></side-comp>
     <main class="catalog__container">
-      <banner-comp></banner-comp>
-      <section class="catalog__content">
-      
-      </section>
+      <header-comp></header-comp>
+      <section class="catalog__content"></section>
       <footer-comp></footer-comp>
     </main>
   </div>
 </template>
 
 <script setup>
-import SideComp from '@/components/layout/SideComp'
-import BannerComp from '@/components/layout/BannerComp'
-import FooterComp from '@/components/layout/FooterComp'
-
-</script> 
+import SideComp from "@/components/layout/SideComp";
+import HeaderComp from "@/components/layout/HeaderComp";
+import FooterComp from "@/components/layout/FooterComp";
+</script>
 
 <style lang="scss" scoped>
 .catalog {
   display: flex;
-  background-color: var(--background-color-primary);
-  color: var(--text-primary-color);
-  max-height: 100vh;
+  background-color: var(--background-color-secondary);
   width: 100%;
+  height: 100vh;
+  max-height: 100vh;
   overflow: hidden;
 }
 .catalog__container {
   display: flex;
   flex-direction: column;
   width: 100%;
-  padding: 1.5rem;
+  padding: 0 1.5rem 1.5rem 1.5rem;
   overflow-y: auto;
 }
 </style>
