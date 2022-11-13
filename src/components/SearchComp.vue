@@ -1,10 +1,15 @@
 <template>
   <div class="search-bar">
-    <input type="text" placeholder="Search" />
+    <input type="text" placeholder="Search" v-model="input" />
   </div>
 </template>
 
-<script setup></script>
+<script setup>
+import { ref } from "vue";
+
+const input = ref("");
+
+</script>
 
 <style lang="scss" scoped>
 .search-bar {
@@ -26,7 +31,7 @@
     background-size: 14px;
     background-repeat: no-repeat;
     background-position: 96%;
-    color: $white;
+    color: var(--text-color-primary);
     &:focus {
       outline: none;
       box-shadow: 0 0 0 2px rgba(134, 140, 160, 0.2);
