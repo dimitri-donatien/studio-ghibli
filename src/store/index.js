@@ -1,14 +1,8 @@
 import { createStore } from 'vuex'
+import ghibli from './modules/ghibli'
 
 export default createStore({
-  state: {
-  },
-  getters: {
-  },
-  mutations: {
-  },
-  actions: {
-  },
   modules: {
-  }
+    ghibli,
+  },
 })
