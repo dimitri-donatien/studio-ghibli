@@ -46,7 +46,6 @@ const props = defineProps({
   justify-content: center;
   height: 100%;
   width: 100%;
-  z-index: 10;
 }
 .banner__title {
   color: #fff;
