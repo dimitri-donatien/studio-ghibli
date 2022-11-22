@@ -7,18 +7,51 @@
         :title="banner.title"
         :img="banner.img"
         :description="banner.description"
+        class="home__banner"
       ></banner-comp>
       <section class="home__content">
-        <div v-for="film in films" :key="film.id">
-          <film-card
-            :id="film.id"
-            :image="film.image"
-            :title="film.title"
-            :date="film.release_date"
-            :time="film.running_time"
-            :score="film.rt_score"
-          ></film-card>
-        </div>
+
+        <template v-if="isErrored">
+          <p>We're sorry, we are unable to retrieve this information at this time. Please retry later.</p>
+        </template>
+
+        <template v-else>
+
+          <div v-if="isLoaded" class="loading">Loading...</div>
+
+          <section class="home__card" v-else>
+
+            <h2>The most popular</h2>
+            <article class="card">
+              <div v-for="film in filteredByScore" :key="film.id">
+                <film-card
+                  :id="film.id"
+                  :image="film.image"
+                  :title="film.title"
+                  :date="film.release_date"
+                  :time="formatTime(film.running_time)"
+                  :score="film.rt_score"
+                ></film-card>
+              </div>
+            </article>
+            
+            <h2>The most recent</h2>
+            <article class="card">
+              <div v-for="film in filteredByDate" :key="film.id">
+                <film-card
+                  :id="film.id"
+                  :image="film.image"
+                  :title="film.title"
+                  :date="film.release_date"
+                  :time="formatTime(film.running_time)"
+                  :score="film.rt_score"
+                ></film-card>
+              </div>
+            </article>
+
+          </section>
+
+        </template>
       </section>
       <footer-comp></footer-comp>
     </main>
@@ -31,6 +64,8 @@ import HeaderComp from "@/components/layout/HeaderComp";
 import BannerComp from "@/components/layout/BannerComp";
 import FilmCard from "@/components/FilmCard";
 import FooterComp from "@/components/layout/FooterComp";
+
+
 
 import { reactive } from "vue";
 import { onBeforeMount, computed } from "vue";
@@ -48,7 +83,24 @@ const banner = reactive({
   description: "",
 });
 
+const isLoaded = computed(() => store.state.ghibli.loading);
+const isErrored = computed(() => store.state.ghibli.error);
 const films = computed(() => store.state.ghibli.films);
+
+const filteredByScore = computed(() => {
+  return films.value.filter((film) => film.rt_score >= 95).sort((a, b) => b.rt_score - a.rt_score); // Sort by score in descending order (highest to lowest). 
+});
+
+const filteredByDate = computed(() => {
+  return films.value.filter((film) => film.release_date >= 2010).sort((a, b) => b.release_date - a.release_date); // sort by date descending order (newest first).
+});
+
+const formatTime = (time) => {
+  const hours = Math.floor(time / 60);
+  const minutes = time % 60;
+  return `${hours}h ${minutes}min`;
+};
+
 </script>
 
 <style lang="scss" scoped>
@@ -66,5 +118,28 @@ const films = computed(() => store.state.ghibli.films);
   width: 100%;
   padding: 0 1.5rem 1.5rem 1.5rem;
   overflow-y: auto;
+}
+.home__banner {
+  margin: 1.5rem 0;
+}
+
+.home__content {
+  height: 100%;
+  width: 100%;
+}
+.home__card {
+  display: grid;
+  flex-direction: column;
+  overflow: hidden;
+  width: 100%;
+}
+
+.card {
+  display: flex;
+  justify-content: flex-start;
+  gap: 1.5rem;
+  width: 100%;
+  height: auto;
+  margin: 1.5rem 0;
 }
 </style>
