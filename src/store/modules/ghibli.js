@@ -13,7 +13,7 @@ const state = {
   specie: {},
   vehicles: [],
   vehicle: {},
-  loading: false,
+  loading: true,
   error: null,
 };
 const getters = {
@@ -39,6 +39,8 @@ const actions = {
       })
       .catch((error) => {
         commit("setError", error);
+      }).finally(() => {
+        commit("setLoading", false);
       });
   },
   async getFilm({ commit }, id) {
@@ -49,6 +51,8 @@ const actions = {
       })
       .catch((error) => {
         commit("setError", error);
+      }).finally(() => {
+        commit("setLoading", false);
       });
   },
   async getPeoples({ commit }) {
@@ -59,6 +63,8 @@ const actions = {
       })
       .catch((error) => {
         commit("setError", error);
+      }).finally(() => {
+        commit("setLoading", false);
       });
   },
   async getPeople({ commit }, id) {
@@ -69,6 +75,8 @@ const actions = {
       })
       .catch((error) => {
         commit("setError", error);
+      }).finally(() => {
+        commit("setLoading", false);
       });
   },
   async getLocations({ commit }) {
@@ -79,6 +87,8 @@ const actions = {
       })
       .catch((error) => {
         commit("setError", error);
+      }).finally(() => {
+        commit("setLoading", false);
       });
   },
   async getLocation({ commit }, id) {
@@ -89,6 +99,8 @@ const actions = {
       })
       .catch((error) => {
         commit("setError", error);
+      }).finally(() => {
+        commit("setLoading", false);
       });
   },
   async getSpecies({ commit }) {
@@ -99,6 +111,8 @@ const actions = {
       })
       .catch((error) => {
         commit("setError", error);
+      }).finally(() => {
+        commit("setLoading", false);
       });
   },
   async getSpecie({ commit }, id) {
@@ -109,6 +123,8 @@ const actions = {
       })
       .catch((error) => {
         commit("setError", error);
+      }).finally(() => {
+        commit("setLoading", false);
       });
   },
   async getVehicles({ commit }) {
@@ -119,6 +135,8 @@ const actions = {
       })
       .catch((error) => {
         commit("setError", error);
+      }).finally(() => {
+        commit("setLoading", false);
       });
   },
   async getVehicle({ commit }, id) {
@@ -129,6 +147,8 @@ const actions = {
       })
       .catch((error) => {
         commit("setError", error);
+      }).finally(() => {
+        commit("setLoading", false);
       });
   },
   setLoading({ commit }, loading) {
