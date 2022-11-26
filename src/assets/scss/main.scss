@@ -34,3 +34,8 @@ p, small, em, b, strong, i, label, input, textarea, select, button {
     color: var(--text-primary-color);
     line-height: 1.5rem;
 }
+
+input:focus {
+    font-family: 'Nunito', sans-serif;
+    color: var(--text-primary-color);
+}
