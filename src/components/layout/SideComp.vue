@@ -128,7 +128,9 @@ function handleToggleTheme(data) {
   align-items: center;
   justify-content: flex-start;
   padding: 1rem;
+  margin: 0.5rem 0;
   width: 100%;
+  transition: all 0.2s ease-in-out;
 
   & svg {
     width: 24px;
@@ -139,8 +141,11 @@ function handleToggleTheme(data) {
   &:hover {
     background-color: var(--background-color-secondary);
     border-radius: 0.5rem;
-    transition: all 0.2s ease-in-out;
   }
+}
+.router-link-active {
+  background-color: var(--background-color-secondary);
+  border-radius: 0.5rem;
 }
 .foo__container {
   width: 100%;

@@ -95,16 +95,15 @@
 </template>
 
 <script setup>
-import { reactive } from "vue";
-
 import SideComp from "@/components/layout/SideComp";
 import BannerComp from "@/components/layout/BannerComp";
 import FooterComp from "@/components/layout/FooterComp";
 
+import { reactive } from "vue";
+
 const banner = reactive({
   title: "About Studio Ghibli",
   img: "https://wallpaperaccess.com/full/745699.jpg",
-  description: "",
 });
 </script>
 
