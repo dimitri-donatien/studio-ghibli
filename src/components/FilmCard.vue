@@ -1,8 +1,9 @@
 <template>
-  <div class="film" :style="{ backgroundImage: 'url(' + image + ')' }">
-    <div class="film__card">
+  <div class="film">
+    <img :src="image" alt="" />
+    <div class="overlay">
       <div class="film__times">
-        <p class="film__date">
+        <span class="film__date">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -18,8 +19,8 @@
             />
           </svg>
           {{ date }}
-        </p>
-        <p class="film__time">
+        </span>
+        <span class="film__time">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -35,7 +36,7 @@
             />
           </svg>
           {{ time }}
-        </p>
+        </span>
       </div>
       <div class="film__content">
         <h2 class="film__title">{{ title }}</h2>
@@ -81,76 +82,89 @@ defineProps({
 
 <style lang="scss" scoped>
 .film {
-  position: relative;
-  inset: 0;
   width: 250px;
-  height: 400px;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  border-radius: 10px;
+  height: auto;
+  position: relative;
+  border-radius: 0.5rem;
   overflow: hidden;
-
-  .film__card {
-    visibility: hidden;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    width: 100%;
-    height: 100%;
-    padding: 1.5rem;
-    transition: all 0.3s ease-in-out;
-  }
-
-  &:hover {
-    .film__card {
-      position: absolute;
-      inset: 0;
-      visibility: visible;
-      display: flex;
-      flex-direction: column;
-      background: rgba(0, 0, 0, 0.6);
-    }
-  }
 }
+.film:hover .overlay {
+  opacity: 1;
+  transform: scale(1);
+}
+.film img {
+  transition: transform 0.8s ease;
+}
+.film:hover img {
+  transform: scale(1.1);
+}
+.overlay {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.6);
+  width: 100%;
+  height: 100%;
+  top: 0;
+  transform: scale(1.3);
+  opacity: 0;
+  transition: transform 0.4s ease 0s;
+  padding: 1rem;
+}
+.overlay span {
+  color: #fff;
+}
+
 .film__times {
   display: flex;
   justify-content: space-between;
   align-items: center;
   width: 100%;
 }
-.film__time,
+
 .film__date,
+.film__time,
 .film__score {
   display: flex;
-  place-items: center;
-  color: #fff;
-
+  align-items: center;
+  color: $white;
   svg {
     width: 24px;
   }
 }
+
+.film__score {
+  justify-content: flex-start;
+  width: 100%;
+}
+
 .film__content {
   display: flex;
+  justify-content: center;
+  align-items: center;
   flex-direction: column;
-  place-items: center;
+  width: 100%;
 }
+
 .film__title {
-  color: #fff;
   text-align: center;
+  color: $white;
 }
+
 .film__link {
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  padding: .5rem 1rem;
-  color: #fff;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
   transition: all 0.1s ease-in-out;
+  color: $white;
 
   &:hover {
     color: var(--text-primary-color);
-    background-color: var(--background-color-secondary);
-    border-radius: 0.5rem;
+    background-color: var(--background-color-primary);
   }
 }
 </style>
