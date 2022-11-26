@@ -39,7 +39,9 @@
       </div>
       <div class="film__content">
         <h2 class="film__title">{{ title }}</h2>
-        <router-link :to="{ name: 'details', params: { id } }" class="film__link"
+        <router-link
+          :to="{ name: 'details', params: { id } }"
+          class="film__link"
           >More info</router-link
         >
       </div>
@@ -97,28 +99,7 @@ defineProps({
     width: 100%;
     height: 100%;
     padding: 1.5rem;
-    transition: all .3s ease-in-out;
-  }
-
-  .film__times {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-  }
-
-  .film__time, .film__date, .film__score{
-    display: flex;
-    place-items: center;
-
-    svg {
-      width: 24px;
-    }
-  }
-
-  .film__content {
-    display: flex;
-    flex-direction: column;
+    transition: all 0.3s ease-in-out;
   }
 
   &:hover {
@@ -130,6 +111,46 @@ defineProps({
       flex-direction: column;
       background: rgba(0, 0, 0, 0.6);
     }
+  }
+}
+.film__times {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+.film__time,
+.film__date,
+.film__score {
+  display: flex;
+  place-items: center;
+  color: #fff;
+
+  svg {
+    width: 24px;
+  }
+}
+.film__content {
+  display: flex;
+  flex-direction: column;
+  place-items: center;
+}
+.film__title {
+  color: #fff;
+  text-align: center;
+}
+.film__link {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: .5rem 1rem;
+  color: #fff;
+  transition: all 0.1s ease-in-out;
+
+  &:hover {
+    color: var(--text-primary-color);
+    background-color: var(--background-color-secondary);
+    border-radius: 0.5rem;
   }
 }
 </style>
