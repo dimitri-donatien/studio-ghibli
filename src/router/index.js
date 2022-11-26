@@ -13,8 +13,9 @@ const routes = [
     component: () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue')
   },
   {
-    path: '/catalog/',
+    path: '/catalog/:slug?',
     name: 'catalog',
+    props: true,
     component: () => import(/* webpackChunkName: "catalog" */ '../views/CatalogView.vue')
   },
   {
@@ -22,11 +23,6 @@ const routes = [
     name: 'details',
     props: true,
     component: () => import(/* webpackChunkName: "catalog" */ '../views/DetailsView.vue')
-  },
-  {
-    path: '/contact',
-    name: 'contact',
-    component: () => import(/* webpackChunkName: "contact" */ '../views/ContactView.vue')
   },
   {
     path : '/:cathMatch(.*)*',
