@@ -19,6 +19,7 @@ const state = {
 const getters = {
   allFilms: (state) => state.films,
   film: (state) => state.film,
+  resetFilm: (state) => (state.film = {}),
   allPeoples: (state) => state.peoples,
   people: (state) => state.people,
   allLocations: (state) => state.locations,
@@ -54,6 +55,9 @@ const actions = {
       }).finally(() => {
         commit("setLoading", false);
       });
+  },
+  resetFilm({ commit }) {
+    commit("resetFilm");
   },
   async getPeoples({ commit }) {
     await axios
@@ -161,6 +165,7 @@ const actions = {
 const mutations = {
   setFilms: (state, films) => (state.films = films),
   setFilm: (state, film) => (state.film = film),
+  resetFilm: (state) => (state.film = {}),
   setPeoples: (state, peoples) => (state.peoples = peoples),
   setPeople: (state, people) => (state.people = people),
   setLocations: (state, locations) => (state.locations = locations),
