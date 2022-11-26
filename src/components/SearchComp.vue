@@ -8,7 +8,6 @@
 import { ref } from "vue";
 
 const input = ref("");
-
 </script>
 
 <style lang="scss" scoped>

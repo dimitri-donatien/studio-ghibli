@@ -40,7 +40,8 @@ const actions = {
       })
       .catch((error) => {
         commit("setError", error);
-      }).finally(() => {
+      })
+      .finally(() => {
         commit("setLoading", false);
       });
   },
@@ -52,7 +53,8 @@ const actions = {
       })
       .catch((error) => {
         commit("setError", error);
-      }).finally(() => {
+      })
+      .finally(() => {
         commit("setLoading", false);
       });
   },
@@ -67,7 +69,8 @@ const actions = {
       })
       .catch((error) => {
         commit("setError", error);
-      }).finally(() => {
+      })
+      .finally(() => {
         commit("setLoading", false);
       });
   },
@@ -79,7 +82,8 @@ const actions = {
       })
       .catch((error) => {
         commit("setError", error);
-      }).finally(() => {
+      })
+      .finally(() => {
         commit("setLoading", false);
       });
   },
@@ -91,7 +95,8 @@ const actions = {
       })
       .catch((error) => {
         commit("setError", error);
-      }).finally(() => {
+      })
+      .finally(() => {
         commit("setLoading", false);
       });
   },
@@ -103,7 +108,8 @@ const actions = {
       })
       .catch((error) => {
         commit("setError", error);
-      }).finally(() => {
+      })
+      .finally(() => {
         commit("setLoading", false);
       });
   },
@@ -115,7 +121,8 @@ const actions = {
       })
       .catch((error) => {
         commit("setError", error);
-      }).finally(() => {
+      })
+      .finally(() => {
         commit("setLoading", false);
       });
   },
@@ -127,7 +134,8 @@ const actions = {
       })
       .catch((error) => {
         commit("setError", error);
-      }).finally(() => {
+      })
+      .finally(() => {
         commit("setLoading", false);
       });
   },
@@ -139,7 +147,8 @@ const actions = {
       })
       .catch((error) => {
         commit("setError", error);
-      }).finally(() => {
+      })
+      .finally(() => {
         commit("setLoading", false);
       });
   },
@@ -151,7 +160,8 @@ const actions = {
       })
       .catch((error) => {
         commit("setError", error);
-      }).finally(() => {
+      })
+      .finally(() => {
         commit("setLoading", false);
       });
   },

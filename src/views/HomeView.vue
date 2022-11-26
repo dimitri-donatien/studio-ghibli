@@ -10,13 +10,14 @@
         class="home__banner"
       ></banner-comp>
       <section class="home__content">
-
         <template v-if="isErrored">
-          <p>We're sorry, we are unable to retrieve this information at this time. Please retry later.</p>
+          <p>
+            We're sorry, we are unable to retrieve this information at this
+            time. Please retry later.
+          </p>
         </template>
 
         <template v-else>
-
           <div v-if="isLoaded" class="loading">Loading...</div>
 
           <section class="home__card" v-else>
@@ -34,7 +35,7 @@
                 ></film-card>
               </div>
             </article>
-            
+
             <h2>The most recent</h2>
             <article class="card">
               <div v-for="film in filteredByDate" :key="film.id">
@@ -48,9 +49,7 @@
                 ></film-card>
               </div>
             </article>
-
           </section>
-
         </template>
       </section>
       <footer-comp></footer-comp>
@@ -65,17 +64,8 @@ import BannerComp from "@/components/layout/BannerComp";
 import FilmCard from "@/components/FilmCard";
 import FooterComp from "@/components/layout/FooterComp";
 
-
-
 import { reactive } from "vue";
-import { onBeforeMount, computed } from "vue";
-import { useStore } from "vuex";
-
-const store = useStore();
-
-onBeforeMount(() => {
-  store.dispatch("ghibli/getFilms");
-});
+import useFilter from "@/composables/useFilter";
 
 const banner = reactive({
   title: "Welcome to Studio Ghibli",
@@ -83,23 +73,7 @@ const banner = reactive({
   description: "",
 });
 
-const isLoaded = computed(() => store.state.ghibli.loading);
-const isErrored = computed(() => store.state.ghibli.error);
-const films = computed(() => store.state.ghibli.films);
-
-const filteredByScore = computed(() => {
-  return films.value.filter((film) => film.rt_score >= 95).sort((a, b) => b.rt_score - a.rt_score); // Sort by score in descending order (highest to lowest). 
-});
-
-const filteredByDate = computed(() => {
-  return films.value.filter((film) => film.release_date >= 2010).sort((a, b) => b.release_date - a.release_date); // sort by date descending order (newest first).
-});
-
-const formatTime = (time) => {
-  const hours = Math.floor(time / 60);
-  const minutes = time % 60;
-  return `${hours}h ${minutes}min`;
-};
+const { filteredByScore, filteredByDate, formatTime, isErrored, isLoaded } = useFilter('films', 'getFilms');
 
 </script>
 
@@ -122,7 +96,6 @@ const formatTime = (time) => {
 .home__banner {
   margin: 1.5rem 0;
 }
-
 .home__content {
   height: 100%;
   width: 100%;
@@ -132,14 +105,13 @@ const formatTime = (time) => {
   flex-direction: column;
   overflow: hidden;
   width: 100%;
-}
-
-.card {
-  display: flex;
-  justify-content: flex-start;
-  gap: 1.5rem;
-  width: 100%;
-  height: auto;
-  margin: 1.5rem 0;
+  .card {
+    display: flex;
+    justify-content: flex-start;
+    gap: 1.5rem;
+    width: 100%;
+    height: auto;
+    margin: 1.5rem 0;
+  }
 }
 </style>
