@@ -1,13 +1,29 @@
 /* Define styles for the default root window element */
 :root {
     --background-color-primary: #FFFFFF;
-    --background-color-secondary: #FBFBFB;
+    --background-color-secondary: #f1f1f1;
     --text-primary-color: #1A1A1A;
+    --search-background-color: rgba(241, 241, 241, 1)
 }
 
 /* Define styles for the root window with dark - mode preference */
 :root.dark-theme {
     --background-color-primary: #1A1A1A;
-    --background-color-secondary: #000000;
-    --text-primary-color: #FBFBFB;
+    --background-color-secondary: #111111;
+    --text-primary-color: #f1f1f1;
+    --search-background-color: rgba(17, 17, 17, 1);
+}
+
+/* Works on Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+    width: .5rem;
+}
+
+*::-webkit-scrollbar-track {
+    background: $brown;
+}
+
+*::-webkit-scrollbar-thumb {
+    background-color: $blue;
+    border: none;
 }
